@@ -14,6 +14,7 @@ body {
     justify-content: center;
     background-color: rgb(21, 77, 46);
 }
+
 #backgro {
     position: absolute;
     height: 100vh;
@@ -34,10 +35,10 @@ main {
     overflow-x: hidden;
     display: flex;
     flex-flow: column;
-    
+
     height: 100vh;
     width: 100vw;
-    
+
     display: flex;
     align-items: flex-end;
 }
@@ -57,7 +58,6 @@ main {
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
-    margin: 20px;
 }
 
 #tela {
@@ -70,11 +70,11 @@ main {
     padding: 10px 5px;
     margin: 10px;
 
-    font-size:1.5em;
+    font-size: 1.5em;
 
     display: flex;
     flex-direction: column;
-    
+
     justify-content: center;
     align-items: flex-end;
 }
@@ -83,7 +83,8 @@ output {
     font-family: Courier, monospace;
     font-weight: 600;
 }
-#out1 {
+
+.out1 {
     font-size: .8em;
     opacity: .5;
 }
@@ -122,6 +123,7 @@ output {
     transition: opacity .25s;
     cursor: pointer;
 }
+
 #button-resultado {
     flex: auto;
     align-content: center;
@@ -129,9 +131,52 @@ output {
     color: white;
 }
 
+#historico {
+    position: absolute;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(139, 139, 139, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 0px 10px #00000080;
+    padding: 10px;
+    border-radius: 20px 0px 0px 20px;
+    flex: 0;
+    padding: 10px;
+    height: 300px;
+
+    display: flex;
+    transition: opacity .5s;
+}
+
+#tela-historico {
+    background-color: rgba(255, 255, 255, 0.3);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 10px;
+
+    font-size: 1.5em;
+
+    display: flex;
+    flex-flow: column;
+
+    align-items: flex-start;
+    overflow-y: scroll;
+    
+}
+.linha {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 25%;
+
+    width: 100px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
 #menus {
     position: fixed;
     top: 0px;
+    right: 0%;
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-end;
@@ -142,6 +187,8 @@ output {
 }
 
 #menu-hamburguer {
+    position: fixed;
+    right: 0%;
     backdrop-filter: blur(10px);
     background-color: rgba(139, 139, 139, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -158,10 +205,10 @@ output {
 
 .line {
     position: absolute;
-    
+
     margin: 50px, 7.5px;
     width: 50px;
-    height: 3px;
+    height: 4px;
     background-color: white;
     transition: all 1s;
 }
@@ -169,16 +216,20 @@ output {
 #line1 {
     transform: translateY(15px);
 }
+
 #line2 {
     transform: translate();
 }
+
 #line3 {
     transform: translateY(-15px);
 }
 
 #menu-options {
+    position: fixed;
+    bottom: 2%;
     transform: translateX(250px);
-    height: 100vh;
+    height: 87.5vh;
     backdrop-filter: blur(10px);
     background-color: rgba(139, 139, 139, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -211,6 +262,8 @@ output {
 }
 
 #prancheta {
+    position: absolute;
+    
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -223,7 +276,8 @@ output {
     backdrop-filter: blur(10px);
     background-color: rgba(139, 139, 139, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    
+    box-shadow: 0px 0px 10px #00000080;
+
     width: 425px;
     height: 550px;
     border-radius: 20px;
@@ -256,6 +310,7 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+
 #prend:hover {
     cursor: pointer;
     color: white;

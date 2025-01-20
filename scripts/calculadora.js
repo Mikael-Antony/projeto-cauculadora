@@ -77,6 +77,8 @@ bPonto.addEventListener('click', ponto);
 //variaeis numericas
 var num = false
 var pont = false
+var histoContas = []
+var histoResultados = []
 
 //funçoes
 function cliqueNumero(n) {
@@ -100,10 +102,14 @@ function ponto() {
 function resultado() {
     if (telaCima.value.length > 0 || telaBaixo.value.length > 0) {
         telaCima.innerHTML += telaBaixo.value
+        histoContas.push(telaCima.value)
         telaBaixo.innerHTML = eval(telaCima.value)
+        histoResultados.push(telaBaixo.value)
         telaCima.innerHTML = ''
         num = false
         pont = false
+
+        addHistoricItem()
     } else {
         alert('adicione alguma operaçao a cauculadora')
     }
@@ -164,7 +170,7 @@ var menu = document.getElementById('menu-hamburguer')
 var line1 = document.getElementById('line1').style
 var line2 = document.getElementById('line2').style
 var line3 = document.getElementById('line3').style
-var options = document.getElementById('menu-options').style
+var options = document.getElementById('menu-options')
 var menuState = false
 
 menu.addEventListener('click', men)
@@ -174,13 +180,13 @@ function men() {
         line1.transform = 'rotate(45deg)';
         line2.width = '3px'
         line3.transform = 'rotate(-45deg)';
-        options.transform = 'translateX(9px)'
+        options.style.transform = 'translateX(9px)'
         menuState = true
     } else {
         line1.transform = 'translateY(15px)';
         line2.width = '50px'
         line3.transform = 'translateY(-15px)';
-        options.transform = 'translateX(250px)'
+        options.style.transform = 'translateX(250px)'
         menuState = false
     }
 
@@ -196,14 +202,18 @@ var optPrancheta = document.getElementById('opt-prancheta')
 optPrancheta.addEventListener('click', sttPrancheta)
 var stt = false
 
+var cauculadoraPos = document.getElementById('pos-calc')
+
 function sttPrancheta() {
 
     if (stt == false) {
         stt = true
-        prancheta.style.transform = 'translateX(0vw)'
+        prancheta.style.transform = 'translate(0vw, 300px)'
+        cauculadoraPos.style.transform = 'translateY(-200px)'
         men()
     } else {
         prancheta.style.transform = 'translateX(150vw)'
+        cauculadoraPos.style.transform = 'translateY(0px)'
         stt = false
     }
 
@@ -218,6 +228,7 @@ function trocaDeFolha() {
     }, 1000)
     setTimeout(function () {
         textarea.innerHTML = ''
+        textarea.value = ''
         textarea.style.transform = ''
     }, 2000)
     setTimeout(function () {
@@ -228,3 +239,35 @@ function trocaDeFolha() {
 
 }
 
+//historico 
+var baseHistorico = document.getElementById('historico')
+var telaHistorico = document.getElementById('tela-historico')
+var optHistorico = document.getElementById('opt-historico')
+optHistorico.addEventListener('click', addhistorico)
+
+var histstt = false
+var addshistory = 0
+
+function addhistorico() {
+    if (histstt == false) {
+        histstt = true
+        baseHistorico.style.position = 'relative'
+        baseHistorico.style.opacity = '1'
+        men()
+    } else {
+        histstt = false
+        baseHistorico.style.opacity = '0'
+        setTimeout(function () {
+            baseHistorico.style.position = 'absolute'
+        }, 250)
+    }
+
+}
+
+function addHistoricItem() {
+    telaHistorico.innerHTML += `<output id="resp1">${histoContas[addshistory]}</output>
+    <output class="out1">${histoResultados[addshistory]}</output>
+    <div class="linha"></div>`
+    addshistory++
+    telaHistorico.scrollTop = telaHistorico.scrollHeight
+}

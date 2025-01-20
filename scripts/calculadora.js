@@ -180,7 +180,7 @@ function men() {
         line1.transform = 'translateY(15px)';
         line2.width = '50px'
         line3.transform = 'translateY(-15px)';
-        options.transform = 'translateX(200px)'
+        options.transform = 'translateX(250px)'
         menuState = false
     }
 
@@ -190,6 +190,24 @@ function men() {
 var prend = document.getElementById('prend')
 prend.addEventListener('click', trocaDeFolha)
 var textarea = document.getElementById('note')
+
+var prancheta = document.getElementById('prancheta')
+var optPrancheta = document.getElementById('opt-prancheta')
+optPrancheta.addEventListener('click', sttPrancheta)
+var stt = false
+
+function sttPrancheta() {
+
+    if (stt == false) {
+        stt = true
+        prancheta.style.transform = 'translateX(0vw)'
+        men()
+    } else {
+        prancheta.style.transform = 'translateX(150vw)'
+        stt = false
+    }
+
+}
 
 function trocaDeFolha() {
     prend.style.width = '110px'
@@ -209,3 +227,4 @@ function trocaDeFolha() {
     }, 2500)
 
 }
+

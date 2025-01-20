@@ -98,16 +98,16 @@ function ponto() {
 };
 
 function resultado() {
-    if (telaCima.length != 0 && telaBaixo.length != 0) {
+    if (telaCima.value.length > 0 || telaBaixo.value.length > 0) {
         telaCima.innerHTML += telaBaixo.value
-    telaBaixo.innerHTML = eval(telaCima.value)
-    telaCima.innerHTML = ''
-    num = false
-    pont = false
+        telaBaixo.innerHTML = eval(telaCima.value)
+        telaCima.innerHTML = ''
+        num = false
+        pont = false
     } else {
         alert('adicione alguma operaçao a cauculadora')
     }
-    
+
 }
 
 function subtracao() {
@@ -123,7 +123,7 @@ function subtracao() {
 function soma() {
     if (telaBaixo.value.length == 0) {
         telaBaixo.innerHTML = ''
-    }else if (num == false) {
+    } else if (num == false) {
         telaBaixo.innerHTML += '+'
         telaCima.innerHTML += telaBaixo.value
         telaBaixo.innerHTML = ''
@@ -134,7 +134,7 @@ function soma() {
 function multiplicacao() {
     if (telaBaixo.value.length == 0) {
         telaBaixo.innerHTML = ''
-    }else if (num == false) {
+    } else if (num == false) {
         telaBaixo.innerHTML += '*'
         telaCima.innerHTML += telaBaixo.value
         telaBaixo.innerHTML = ''
@@ -145,7 +145,7 @@ function multiplicacao() {
 function divisao() {
     if (telaBaixo.value.length == 0) {
         telaBaixo.innerHTML = ''
-    }else if (num == false) {
+    } else if (num == false) {
         telaBaixo.innerHTML += '/'
         telaCima.innerHTML += telaBaixo.value
         telaBaixo.innerHTML = ''
@@ -156,7 +156,7 @@ function divisao() {
 
 function del() {
     let tb = telaBaixo.innerHTML;
-    telaBaixo.innerHTML = tb.substring(0, tb.length -1)
+    telaBaixo.innerHTML = tb.substring(0, tb.length - 1)
 }
 
 //menu hamburguer
@@ -183,6 +183,29 @@ function men() {
         options.transform = 'translateX(200px)'
         menuState = false
     }
-    
+
 }
 
+//prancheta
+var prend = document.getElementById('prend')
+prend.addEventListener('click', trocaDeFolha)
+var textarea = document.getElementById('note')
+
+function trocaDeFolha() {
+    prend.style.width = '110px'
+    prend.style.height = '60px'
+    prend.style.fontSize = '1.1em'
+    setTimeout(function () {
+        textarea.style.transform = 'translateX(150vw)'
+    }, 1000)
+    setTimeout(function () {
+        textarea.innerHTML = ''
+        textarea.style.transform = ''
+    }, 2000)
+    setTimeout(function () {
+        prend.style.width = '100px'
+        prend.style.height = '50px'
+        prend.style.fontSize = '1em'
+    }, 2500)
+
+}

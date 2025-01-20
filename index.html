@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cauculadora</title>
     <link rel="stylesheet" href="estilo/style.css" media="all">
 </head>
-<body>
-    <main>
-        <div id="corpo-cauculadora">
-            <div id="tela">
-                <output id="out1">0</output>
-                <output id="out2">00</output>
-            </div>
-            <div id="buttons">
-                
-                <div id="teclas-topo">
-                    <div class="button" id="button-OFF">OFF</div>
-                    <div class="button" id="button-AC">AC</div>
-                    <div class="button" id="button-raiz">&#8730;</div>
-                    <div class="button" id="button-Divisao">&#247;</div>
-                </div>
-                
-                <div id="teclas-baixo">
-                    <div id="tecla-numeros">
-                        <div class="button" id="button-1">1</div>
-                        <div class="button" id="button-2">2</div>
-                        <div class="button" id="button-3">3</div>
-                    
-                        <div class="button" id="button-4">4</div>
-                        <div class="button" id="button-5">5</div>
-                        <div class="button" id="button-6">6</div>
-                    
-                        <div class="button" id="button-7">7</div>
-                        <div class="button" id="button-8">8</div>
-                        <div class="button" id="button-9">9</div>
-                        
-                        <div class="button" id="button-00">00</div>
-                        <div class="button" id="button-0">0</div>
-                        <div class="button" id="button-ponto">.</div>
-                    </div>
 
-                    <div id="teclas-lateral">
+<body>
+    <img src="midia/image.png" id="backgro" alt="">
+
+
+    <main>
+        <div id="pos-calc">
+            <div id="corpo-cauculadora">
+                <div id="tela">
+                    <output id="out2"></output>
+                    <output id="out1"></output>
+                    <output id="res"></output>
+                </div>
+                <div id="buttons">
+                    <div id="teclas-topo">
+                        <div class="button" id="button-AC">AC</div>
+                        <div class="button" id="button-delete">DEL</div>
+                        <div class="button" id="button-Divisao">&#247;</div>
                         <div class="button" id="button-multiplicacao">&#215;</div>
-                        <div class="button" id="button-subtracao">&#8211;</div>
-                        <div class="button" id="button-adicao">&#43;</div>
-                        <div class="button" id="button-resultado">&#61;</div>
+                    </div>
+                    <div id="teclas-baixo">
+                        <div id="tecla-numeros">
+                            <div class="button" id="button-1">1</div>
+                            <div class="button" id="button-2">2</div>
+                            <div class="button" id="button-3">3</div>
+                            <div class="button" id="button-4">4</div>
+                            <div class="button" id="button-5">5</div>
+                            <div class="button" id="button-6">6</div>
+                            <div class="button" id="button-7">7</div>
+                            <div class="button" id="button-8">8</div>
+                            <div class="button" id="button-9">9</div>
+                            <div class="button" id="button-00">00</div>
+                            <div class="button" id="button-0">0</div>
+                            <div class="button" id="button-ponto">.</div>
+                        </div>
+                        <div id="teclas-lateral">
+                            <div class="button" id="button-subtracao">&#8211;</div>
+                            <div class="button" id="button-adicao">&#43;</div>
+                            <div class="button" id="button-resultado">&#61;</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    <div id="menu-hamburguer">
+        <div class="line" id="line1"></div>
+        <div class="line" id="line2"></div>
+        <div class="line" id="line3"></div>
+    </div>
     </main>
     <script src="scripts/calculadora.js"></script>
 </body>
+
 </html>

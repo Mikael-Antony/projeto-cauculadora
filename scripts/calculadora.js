@@ -20,7 +20,7 @@ const bPonto = document.getElementById('button-ponto')
 //botoes para calculo ou resultado
 const bOff = document.getElementById('button-OFF')
 const bAc = document.getElementById('button-AC')
-const bRaiz = document.getElementById('button-raiz')
+const bDelete = document.getElementById('button-delete')
 const bDivisao = document.getElementById('button-Divisao')
 
 const bMultiplicacao = document.getElementById('button-multiplicacao')
@@ -31,13 +31,13 @@ const bResultado = document.getElementById('button-resultado')
 //eventos clique
 bAc.addEventListener('click', AC);
 
-bSubtracao.addEventListener('click', function () {
-    subtracao(Number(telaBaixo.value));
-});
-bAdicao.addEventListener('click', function () {
-    soma(Number(telaBaixo.value));
-});
-bResultado.addEventListener('click', resultado)
+bSubtracao.addEventListener('click', subtracao);
+bAdicao.addEventListener('click', soma);
+bMultiplicacao.addEventListener('click', multiplicacao)
+bDivisao.addEventListener('click', divisao)
+bResultado.addEventListener('click', resultado);
+bDelete.addEventListener('click', del)
+
 
 b1.addEventListener('click', function () {
     cliqueNumero(1);
@@ -75,77 +75,117 @@ b00.addEventListener('click', function () {
 bPonto.addEventListener('click', ponto);
 
 //variaeis numericas
-var check = true
-var res = false
-var num = 0
-var ultimaConta = ''
+var num = false
+var pont = false
 
 //funçoes
 function cliqueNumero(n) {
-    if (telaBaixo.value == '00') {
-        telaBaixo.innerHTML = ''
-    }
-    if (res == true) {
-        telaBaixo.innerHTML = ''
-        num = 0
-        res = false
-        ultimaConta = ''
-    }
+    num = false
     return telaBaixo.innerHTML += n;
 };
 
 function AC() {
-    telaCima.innerHTML = '0'
-    telaBaixo.innerHTML = '00'
-    check = true
-    num = 0
+    telaCima.innerHTML = ''
+    telaBaixo.innerHTML = ''
+    num = ''
+    pont = false
 };
-
-function soma(n) {
-    if (num <= 0) {
-        num += n;
-    } else {
-        num -= n;
-    }
-
-    check = false
-    ultimaConta = 'soma'
-    return telaCima.innerHTML = telaBaixo.value, telaBaixo.innerHTML = '';
-};
-function subtracao(n) {
-    if (check == true) {
-        num += n;
-        check = false
-    } else {
-        num -= n;
-    }
-    ultimaConta = 'subtracao'
-    if (telaBaixo.value == '00') {
-        return telaBaixo.innerHTML = '-'
-    } else {
-        return telaCima.innerHTML = telaBaixo.value, telaBaixo.innerHTML = '';
-    }
-};
-
 function ponto() {
-    telaBaixo.innerHTML += '.'
+    if (pont == false) {
+        telaBaixo.innerHTML += '.'
+        pont = true
+    }
 };
 
 function resultado() {
-    switch (ultimaConta) {
-        case 'soma':
-            soma(Number(telaBaixo.value))
-            break;
-        case 'subtracao':
-            subtracao(Number(telaBaixo.value))
-            break;
-
-        default:
-            break;
-    }
-
+    telaCima.innerHTML += telaBaixo.value
+    telaBaixo.innerHTML = eval(telaCima.value)
     telaCima.innerHTML = ''
-    telaBaixo.innerHTML = num
-    check = true
-    num = 0
+    num = false
+    pont = false
 }
+
+function subtracao() {
+    if (num == false) {
+        telaBaixo.innerHTML += '-'
+        telaCima.innerHTML += telaBaixo.value
+        telaBaixo.innerHTML = ''
+        pont = false
+        num = true
+    }
+}
+
+function soma() {
+    if (telaBaixo.value.length == 0) {
+        telaBaixo.innerHTML = ''
+    }else if (num == false) {
+        telaBaixo.innerHTML += '+'
+        telaCima.innerHTML += telaBaixo.value
+        telaBaixo.innerHTML = ''
+        num = true
+        pont = false
+    }
+}
+function multiplicacao() {
+    if (telaBaixo.value.length == 0) {
+        telaBaixo.innerHTML = ''
+    }else if (num == false) {
+        telaBaixo.innerHTML += '*'
+        telaCima.innerHTML += telaBaixo.value
+        telaBaixo.innerHTML = ''
+        num = true
+        pont = false
+    }
+}
+function divisao() {
+    if (telaBaixo.value.length == 0) {
+        telaBaixo.innerHTML = ''
+    }else if (num == false) {
+        telaBaixo.innerHTML += '/'
+        telaCima.innerHTML += telaBaixo.value
+        telaBaixo.innerHTML = ''
+        num = true
+        pont = false
+    }
+}
+
+function del() {
+    let tb = telaBaixo.innerHTML;
+    telaBaixo.innerHTML = tb.substring(0, tb.length -1)
+}
+
+//menu hamburguer
+var menu = document.getElementById('menu-hamburguer')
+var line1 = document.getElementById('line1').style
+var line2 = document.getElementById('line2').style
+var line3 = document.getElementById('line3').style
+var menuState = false
+
+menu.addEventListener('click', men)
+
+function men() {
+    if (menuState == false) {
+        line1.transform = 'rotate(45deg)';
+        line2.width = '3px'
+        line3.transform = 'rotate(-45deg)';
+        menuState = true
+    } else {
+        line1.transform = 'translateY(15px)';
+        line2.width = '50px'
+        line3.transform = 'translateY(-15px)';
+        menuState = false
+    }
+    
+}
+
+/*
+#line1 {
+    transform: rotate(45deg);
+}
+#line2 {
+    width: 0px;
+}
+#line3 {
+    transform: rotate(-45deg);
+}
+*/

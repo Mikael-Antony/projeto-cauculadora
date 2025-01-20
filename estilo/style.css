@@ -31,13 +31,15 @@ body {
 
 main {
     position: absolute;
-    overflow: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-flow: column;
     
     height: 100vh;
     width: 100vw;
     
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 #corpo-cauculadora {
@@ -55,6 +57,7 @@ main {
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
+    margin: 20px;
 }
 
 #tela {
@@ -126,7 +129,8 @@ output {
 }
 
 #menus {
-    position: absolute;
+    position: fixed;
+    top: 0px;
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-end;
@@ -191,10 +195,7 @@ output {
 .opt {
     display: flex;
     align-items: center;
-
-}
-.opt > label {
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .checkbox {
@@ -205,4 +206,42 @@ output {
     background-color: #ffffff80;
     backdrop-filter: blur(10px);
     color: black;
+}
+
+#prancheta {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#base {
+    backdrop-filter: blur(10px);
+    background-color: rgba(139, 139, 139, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    width: 425px;
+    height: 550px;
+    border-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+textarea {
+    font-size: 1.3em;
+    padding: 12px;
+    resize: none;
+}
+
+#prend {
+    transform: translateY(-267.5px);
+    border-radius: 10px;
+    opacity: .9;
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background-color: black;
 }

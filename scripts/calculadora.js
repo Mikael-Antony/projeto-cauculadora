@@ -98,11 +98,16 @@ function ponto() {
 };
 
 function resultado() {
-    telaCima.innerHTML += telaBaixo.value
+    if (telaCima.length != 0 && telaBaixo.length != 0) {
+        telaCima.innerHTML += telaBaixo.value
     telaBaixo.innerHTML = eval(telaCima.value)
     telaCima.innerHTML = ''
     num = false
     pont = false
+    } else {
+        alert('adicione alguma operaçao a cauculadora')
+    }
+    
 }
 
 function subtracao() {
@@ -181,14 +186,3 @@ function men() {
     
 }
 
-/*
-#line1 {
-    transform: rotate(45deg);
-}
-#line2 {
-    width: 0px;
-}
-#line3 {
-    transform: rotate(-45deg);
-}
-*/

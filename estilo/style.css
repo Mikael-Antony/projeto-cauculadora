@@ -126,6 +126,7 @@ output {
 }
 
 #menus {
+    position: absolute;
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-end;

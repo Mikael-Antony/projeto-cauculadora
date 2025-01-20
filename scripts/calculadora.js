@@ -159,6 +159,7 @@ var menu = document.getElementById('menu-hamburguer')
 var line1 = document.getElementById('line1').style
 var line2 = document.getElementById('line2').style
 var line3 = document.getElementById('line3').style
+var options = document.getElementById('menu-options').style
 var menuState = false
 
 menu.addEventListener('click', men)
@@ -168,11 +169,13 @@ function men() {
         line1.transform = 'rotate(45deg)';
         line2.width = '3px'
         line3.transform = 'rotate(-45deg)';
+        options.transform = 'translateX(9px)'
         menuState = true
     } else {
         line1.transform = 'translateY(15px)';
         line2.width = '50px'
         line3.transform = 'translateY(-15px)';
+        options.transform = 'translateX(200px)'
         menuState = false
     }
     
